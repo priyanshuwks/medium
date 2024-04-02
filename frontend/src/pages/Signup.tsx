@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function Signup() {
   return (
-    <div className="w-screen flex ">
-      <div className="w-2/6 h-4/6 my-6 border border-gray-400 rounded-md p-4 ">
+    <div className="flex justify-evenly items-center h-screen w-screen">
+      <div className="w-5/12 h-4/6 my-6 border border-gray-400 rounded-md p-4 ">
         <h2 className="text-center text-3xl font-extrabold text-gray-900">
           Create an Account
         </h2>
@@ -65,7 +65,7 @@ export default function Signup() {
         </form>
       </div>
 
-      {/* <Quote /> */}
+      <Quote />
     </div>
   );
 }

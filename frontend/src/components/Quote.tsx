@@ -1,11 +1,11 @@
 
 export default function Quote(){
     return(
-        <div className="bg-slate-200 h-screen">
+        <div className="bg-slate-200 rounded-md h-4/6 w-5/12 p-4 flex justify-center items-center text-center">
             <div>
-                <h1>Ek asafalta se dhuki ho kar jiska mann dolta nahi aur ek safalta se aanandit hokar swayam ko sarwashrestha nahi manta, aise hi vaiktiyo ke haantho koi mahatwa ka karya hota hai </h1>
-                <h2>Great Personality</h2>
-                <h5>CEO, Universe</h5>
+                <p className="text-2xl my-2">Ek asafalta se dhuki ho kar jiska mann dolta nahi aur ek safalta se aanandit hokar swayam ko sarwashrestha nahi manta, aise hi vaiktiyo ke haantho koi mahatwa ka karya hota hai </p>
+                <p className="text-base font-bold"> Great Personality</p>
+                <p className="text-xs">CEO, Universe</p>
             </div>
         </div>
     );
