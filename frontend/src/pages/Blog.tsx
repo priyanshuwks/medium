@@ -1,8 +1,10 @@
+import { BlogComp } from "../components/BlogComp";
+import { BlogFull } from "../components/BlogFull";
 
 export default function Blog(){
     return (
         <>
-            <p>this is blog page</p>
+            <BlogFull />
         </>
     )
 }

@@ -1,24 +1,36 @@
 import { useState } from "react";
 import Quote from "../components/Quote";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import {BACKEND_URL} from '../config';
 
 export default function Signup() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     async function handleButtonClick(e : any){
-        e.preventDefault();
+        try {
+            e.preventDefault();
         const toSend = {
             name,
             email,
             password
         }
-        console.log(toSend);
-        await axios.post("http://localhost:8787/api/v1/user/signup/", toSend);
+        console.log(`${name} ${email} ${password}`);
+        const res = await axios.post(`${BACKEND_URL}/api/v1/user/signup`, toSend);
+        const data = res.data;
+        localStorage.setItem("token", data.jwt);
+        navigate('/signin');
+        } catch (error) {
+            alert("Signup failed!");
+        }
+        
+        
     }
   return (
+    
     <div className="flex justify-evenly items-center h-screen w-screen">
       <div className="w-5/12 h-4/6 my-6 border border-gray-400 rounded-md p-4 ">
         <h2 className="text-center text-3xl font-extrabold text-gray-900">
@@ -32,7 +44,6 @@ export default function Signup() {
         <form>
           <div className="mb-4">
             <label
-              htmlFor="name"
               className="block text-sm font-medium text-gray-700"
             >
               Name
@@ -49,7 +60,6 @@ export default function Signup() {
           </div>
           <div className="mb-4">
             <label
-              htmlFor="email"
               className="block text-sm font-medium text-gray-700"
             >
               Email
@@ -66,7 +76,6 @@ export default function Signup() {
           </div>
           <div className="mb-4">
             <label
-              htmlFor="password"
               className="block text-sm font-medium text-gray-700"
             >
               Password
@@ -82,8 +91,7 @@ export default function Signup() {
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-            onClick={handleButtonClick}
-          >
+            onClick={handleButtonClick}>
             Register
           </button>
         </form>
